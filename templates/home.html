@@ -1,0 +1,134 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section - Split Screen -->
+<section class="relative min-h-screen gradient-bg hockey-pattern">
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/5 to-yellow-800/10"></div>
+    
+    <div class="relative z-10 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+                
+                <!-- Left Side - Hero Image Placeholder -->
+                <div class="slide-in-left">
+                    <div class="hero-image rounded-3xl h-96 lg:h-[600px] flex items-center justify-center relative overflow-hidden shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-amber-100/50 to-beige-200/30"></div>
+                        <div class="relative z-10 text-center p-8">
+                            <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-amber-700 to-yellow-800 rounded-full flex items-center justify-center shadow-xl">
+                                <i class="fas fa-hockey-puck text-4xl text-white"></i>
+                            </div>
+                            <p class="text-beige-700 font-medium text-lg">Hockey Action Photo</p>
+                            <p class="text-beige-600 text-sm mt-2">Coming Soon...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Content & Stats -->
+                <div class="slide-in-right space-y-8">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <h1 class="text-5xl lg:text-7xl font-display font-bold text-beige-900 tracking-tight puck-trail">
+                                Jesse Xiong
+                            </h1>
+                        </div>
+                        <p class="text-xl lg:text-2xl text-amber-800 font-semibold mb-4">Phil-Mont Christian Academy</p>
+                        <p class="text-beige-700 text-lg leading-relaxed max-w-lg">
+                            Hi! I'm Jesse, a speedy winger from Plymouth Meeting, PA.
+                            Check out my website for my highlights, social work, and learn more about me.
+                        </p>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stat-card rounded-xl p-6 text-center">
+                            <div class="text-3xl font-bold text-amber-700 mb-1">Colonials 18U</div>
+                            <div class="text-beige-600 text-sm font-medium">Current Team</div>
+                        </div>
+                        <div class="stat-card rounded-xl p-6 text-center">
+                            <div class="text-3xl font-bold text-yellow-800 mb-1">Winger</div>
+                            <div class="text-beige-600 text-sm font-medium">Position</div>
+                        </div>
+                        <div class="stat-card rounded-xl p-6 text-center">
+                            <div class="text-3xl font-bold text-orange-700 mb-1">AAA/AA</div>
+                            <div class="text-beige-600 text-sm font-medium">Skill Level</div>
+                        </div>
+                        <div class="stat-card rounded-xl p-6 text-center">
+                            <div class="text-3xl font-bold text-amber-800 mb-1">2026</div>
+                            <div class="text-beige-600 text-sm font-medium">Class</div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="{{ url_for('highlights') }}" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold text-center">
+                            <i class="fas fa-play mr-2"></i>Watch Highlights
+                        </a>
+                        <a href="{{ url_for('social_work') }}" class="glass-effect hover:bg-beige-200/30 text-beige-900 px-8 py-4 rounded-full text-lg font-semibold text-center transition-all duration-300">
+                            <i class="fas fa-heart mr-2"></i>Community Impact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-amber-700 rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-amber-700 rounded-full mt-2 animate-pulse"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Divider -->
+<div class="relative">
+    <div class="absolute inset-0 bg-gradient-to-r from-beige-100 via-beige-50 to-beige-100"></div>
+    <svg class="relative w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#gradient1)"></path>
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.1" />
+                <stop offset="100%" style="stop-color:#b8860b;stop-opacity:0.1" />
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
+
+<!-- Featured Videos -->
+{% if featured_videos %}
+<section class="py-20 px-4 bg-gradient-to-b from-beige-50 to-white">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 text-beige-900">Featured Highlights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for video in featured_videos %}
+            <div class="glass-effect rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="relative">
+                    <video controls class="w-full h-48 object-cover">
+                        <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <i class="fas fa-star"></i> Featured
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-2 text-beige-900">{{ video.title }}</h3>
+                    {% if video.description %}
+                    <p class="text-beige-600 text-sm mb-2">{{ video.description }}</p>
+                    {% endif %}
+                    <p class="text-beige-600 text-xs">
+                        <i class="fas fa-calendar"></i> 
+                        {{ video.upload_date.strftime('%B %d, %Y') if video.upload_date else 'Recently uploaded' }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

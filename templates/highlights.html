@@ -1,0 +1,90 @@
+<!-- templates/highlights.html -->
+{% extends "base.html" %}
+
+{% block title %}Hockey Highlights - Jesse Xiong{% endblock %}
+
+{% block content %}
+<section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 text-beige-900">Hockey Highlights</h1>
+            <p class="text-beige-600 text-lg">My best plays on the ice</p>
+        </div>
+
+        {% if featured_videos or other_videos %}
+        
+        <!-- Featured Videos Section -->
+        {% if featured_videos %}
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-beige-900 text-center">
+                <i class="fas fa-star text-amber-500 mr-2"></i>Featured Highlights
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for video in featured_videos %}
+                <div class="glass-effect rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <video controls class="w-full h-56 object-cover">
+                            <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                                <i class="fas fa-star"></i> Featured
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-beige-900">{{ video.title }}</h3>
+                        {% if video.description %}
+                        <p class="text-beige-600 mb-3">{{ video.description }}</p>
+                        {% endif %}
+                        <p class="text-beige-600 text-sm">
+                            <i class="fas fa-calendar"></i> 
+                            {{ video.upload_date.strftime('%B %d, %Y') if video.upload_date else 'Recently uploaded' }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- All Other Videos Section -->
+        {% if other_videos %}
+        <div>
+            <h2 class="text-3xl font-bold mb-8 text-beige-900 text-center">All Highlights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for video in other_videos %}
+                <div class="glass-effect rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <video controls class="w-full h-56 object-cover">
+                            <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-beige-900">{{ video.title }}</h3>
+                        {% if video.description %}
+                        <p class="text-beige-600 mb-3">{{ video.description }}</p>
+                        {% endif %}
+                        <p class="text-beige-600 text-sm">
+                            <i class="fas fa-calendar"></i> 
+                            {{ video.upload_date.strftime('%B %d, %Y') if video.upload_date else 'Recently uploaded' }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="text-center py-20">
+            <i class="fas fa-video text-6xl text-beige-400 mb-4"></i>
+            <h3 class="text-2xl font-semibold mb-2 text-beige-900">No highlights yet</h3>
+            <p class="text-beige-600">Check back soon for new hockey highlights!</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

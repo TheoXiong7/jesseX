@@ -1,0 +1,103 @@
+<!-- templates/social_work.html -->
+{% extends "base.html" %}
+
+{% block title %}Social Work - Jesse Xiong{% endblock %}
+
+{% block content %}
+<section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 text-beige-900">Social Work</h1>
+            <p class="text-beige-600 text-lg">Making a difference beyond the ice</p>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Community Programs -->
+            <div class="glass-effect rounded-xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-amber-700 to-yellow-800 rounded-full flex items-center justify-center mr-6 shadow-lg">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-beige-900">Youth Hockey Programs</h2>
+                        <p class="text-beige-600">Empowering the next generation</p>
+                    </div>
+                </div>
+                <p class="text-beige-700 leading-relaxed">
+                    I volunteer as a mentor and coach for underprivileged youth in our community, 
+                    teaching them not just hockey skills but life values like teamwork, perseverance, 
+                    and leadership. Through free hockey clinics and equipment donations, we're making 
+                    the sport accessible to everyone, regardless of their economic background.
+                </p>
+            </div>
+
+            <!-- Education Initiatives -->
+            <div class="glass-effect rounded-xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-700 to-amber-600 rounded-full flex items-center justify-center mr-6 shadow-lg">
+                        <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-beige-900">Educational Support</h2>
+                        <p class="text-beige-600">Building futures through learning</p>
+                    </div>
+                </div>
+                <p class="text-beige-700 leading-relaxed">
+                    Education is the key to breaking cycles of poverty. I work with local schools 
+                    to provide tutoring services and scholarship opportunities for student-athletes. 
+                    Our program has helped over 50 students improve their grades while pursuing 
+                    their athletic dreams, showing them that they don't have to choose between 
+                    sports and academics.
+                </p>
+            </div>
+
+            <!-- Mental Health Advocacy -->
+            <div class="glass-effect rounded-xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-rose-700 to-orange-700 rounded-full flex items-center justify-center mr-6 shadow-lg">
+                        <i class="fas fa-heart text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-beige-900">Mental Health Awareness</h2>
+                        <p class="text-beige-600">Breaking the stigma, one conversation at a time</p>
+                    </div>
+                </div>
+                <p class="text-beige-700 leading-relaxed">
+                    Mental health in sports is often overlooked. I advocate for open conversations 
+                    about mental wellness, sharing my own experiences with performance anxiety and 
+                    the pressures of competitive sports. Through workshops and speaking engagements, 
+                    I help athletes understand that seeking help is a sign of strength, not weakness.
+                </p>
+            </div>
+
+            <!-- Community Outreach -->
+            <div class="glass-effect rounded-xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-700 to-red-700 rounded-full flex items-center justify-center mr-6 shadow-lg">
+                        <i class="fas fa-hands-helping text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-beige-900">Community Outreach</h2>
+                        <p class="text-beige-600">Giving back to those who supported me</p>
+                    </div>
+                </div>
+                <p class="text-beige-700 leading-relaxed">
+                    Regular volunteer work at local food banks, homeless shelters, and senior centers 
+                    keeps me grounded and connected to my community. I organize annual charity drives 
+                    during the hockey season, raising funds and awareness for various causes. 
+                    It's important to remember that success is meaningless unless it's shared with others.
+                </p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <h3 class="text-2xl font-bold mb-4 text-beige-900">Want to Get Involved?</h3>
+            <p class="text-beige-600 mb-6">Join me in making a difference in our community</p>
+            <a href="mailto:jesse@example.com" class="inline-block bg-gradient-to-r from-amber-700 to-yellow-800 hover:from-amber-800 hover:to-yellow-900 text-white px-8 py-4 rounded-full text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-lg">
+                Get In Touch
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

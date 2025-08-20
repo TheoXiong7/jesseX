@@ -1,0 +1,250 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Jesse Xiong{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .font-display {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        /* Font Hierarchy:
+           - Navigation & Headers: Inter (clean, modern)
+           - Hero Title Only: Playfair Display (elegant impact)
+           - All Body Text: Inter (consistent readability)
+        */
+        .glass-effect {
+            background: rgba(245, 239, 224, 0.25);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(222, 184, 135, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 117, 89, 0.15), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #faf8f3 0%, #f5efe0 30%, #e8dcc0 70%, #d4c5a0 100%);
+            position: relative;
+        }
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="%23d4c5a0" opacity="0.1"/><circle cx="75" cy="75" r="0.3" fill="%23a0886a" opacity="0.1"/><circle cx="50" cy="10" r="0.4" fill="%23deb887" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        .hockey-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(184, 134, 11, 0.1) 0%, transparent 50%);
+        }
+        .puck-trail {
+            position: relative;
+        }
+        .puck-trail::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.6) 0%, transparent 100%);
+            transform: translateY(-50%);
+        }
+        .stat-card {
+            backdrop-filter: blur(20px);
+            background: rgba(250, 248, 243, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 117, 89, 0.15);
+        }
+        .hero-image {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="ice" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 20h40M20 0v40" stroke="%23deb887" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="200" height="200" fill="url(%23ice)"/></svg>');
+            opacity: 0.3;
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out 0.2s both;
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .video-overlay {
+            background: linear-gradient(45deg, rgba(139, 117, 89, 0.85) 0%, rgba(160, 136, 106, 0.5) 100%);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(0.5deg); }
+        }
+        .text-beige-900 { color: #3e2723; }
+        .text-beige-700 { color: #5d4e37; }
+        .text-beige-600 { color: #8b7355; }
+        .text-beige-400 { color: #a0886a; }
+        .bg-beige-50 { background-color: #faf8f3; }
+        .bg-beige-100 { background-color: #f5efe0; }
+        .bg-beige-200 { background-color: #e8dcc0; }
+        .border-beige-300 { border-color: #deb887; }
+        .hover\:text-beige-600:hover { color: #8b7355; }
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(139, 117, 89, 0.25);
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+        p {
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body class="bg-beige-50 text-beige-900 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="{{ url_for('home') }}" class="text-2xl font-semibold bg-gradient-to-r from-amber-700 to-yellow-800 bg-clip-text text-transparent tracking-tight">
+                        Jesse Xiong
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="{{ url_for('home') }}" class="hover:text-beige-600 transition duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="{{ url_for('highlights') }}" class="hover:text-beige-600 transition duration-300 px-3 py-2 rounded-md text-sm font-medium">Highlights</a>
+                        <a href="{{ url_for('social_work') }}" class="hover:text-beige-600 transition duration-300 px-3 py-2 rounded-md text-sm font-medium">Social Work</a>
+                        <a href="{{ url_for('about') }}" class="hover:text-beige-600 transition duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-beige-600 hover:text-beige-900">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden glass-effect">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="{{ url_for('home') }}" class="block px-3 py-2 text-base font-medium hover:text-beige-600 transition duration-300">Home</a>
+                <a href="{{ url_for('highlights') }}" class="block px-3 py-2 text-base font-medium hover:text-beige-600 transition duration-300">Highlights</a>
+                <a href="{{ url_for('social_work') }}" class="block px-3 py-2 text-base font-medium hover:text-beige-600 transition duration-300">Social Work</a>
+                <a href="{{ url_for('about') }}" class="block px-3 py-2 text-base font-medium hover:text-beige-600 transition duration-300">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="fixed top-20 right-4 z-50">
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-lg glass-effect {% if category == 'error' %}border-red-400{% else %}border-green-600{% endif %} shadow-lg">
+                        <p class="text-sm">{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-effect mt-20">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p>&copy; 2025 Jesse Xiong. All rights reserved.</p>
+                <div class="mt-4 flex justify-center space-x-6">
+                    <a href="#" class="text-beige-400 hover:text-beige-600 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-beige-400 hover:text-beige-600 transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-beige-400 hover:text-beige-600 transition duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Auto-hide flash messages
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.fixed.top-20 > div');
+            flashMessages.forEach(function(msg) {
+                msg.style.opacity = '0';
+                msg.style.transition = 'opacity 0.5s';
+                setTimeout(function() {
+                    msg.remove();
+                }, 500);
+            });
+        }, 4000);
+    </script>
+</body>
+</html>

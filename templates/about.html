@@ -1,0 +1,100 @@
+<!-- templates/about.html -->
+{% extends "base.html" %}
+
+{% block title %}About - Jesse Xiong{% endblock %}
+
+{% block content %}
+<section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 text-beige-900">About Jesse</h1>
+            <p class="text-beige-600 text-lg">The person behind the player</p>
+        </div>
+
+        <div class="glass-effect rounded-xl p-8 mb-12 shadow-lg">
+            <div class="prose prose-lg text-beige-700 leading-relaxed">
+                <p class="text-xl mb-6">
+                    Hockey has been my passion since I first stepped onto the ice at age five, 
+                    but it's the lessons learned off the rink that have truly shaped who I am today.
+                </p>
+                
+                <p class="mb-6">
+                    Growing up in a multicultural household, I learned early on that diversity is 
+                    a strength, not a barrier. My parents, immigrants who sacrificed everything 
+                    to give me opportunities they never had, instilled in me the values of hard work, 
+                    humility, and giving back to the community that supports you.
+                </p>
+                
+                <p class="mb-6">
+                    My journey in hockey hasn't been without its challenges. From being one of the 
+                    few Asian players in many leagues to overcoming significant injuries that 
+                    threatened my career, each obstacle has taught me resilience and empathy. 
+                    These experiences opened my eyes to the barriers that many young athletes face, 
+                    particularly those from underrepresented backgrounds.
+                </p>
+                
+                <p class="mb-6">
+                    This realization sparked my commitment to social work and community advocacy. 
+                    I believe that sports have the unique power to unite people across all 
+                    boundaries – economic, racial, and social. Through my various initiatives, 
+                    I've seen firsthand how a simple act of mentorship or providing equipment 
+                    to a kid who can't afford it can change the trajectory of their entire life.
+                </p>
+                
+                <p class="mb-6">
+                    When I'm not on the ice or working with community programs, you'll find me 
+                    reading about social psychology, learning new languages (currently working 
+                    on my Spanish!), or exploring nature through hiking and photography. 
+                    I believe that personal growth never stops, and every experience adds 
+                    another layer to who we become.
+                </p>
+                
+                <p class="mb-6">
+                    My goal extends beyond personal athletic achievements. I want to create 
+                    lasting change in how we approach youth development in sports, making it 
+                    more inclusive, supportive, and focused on developing character alongside 
+                    skill. Every highlight reel moment on the ice is meaningless if it doesn't 
+                    translate to positive impact in real life.
+                </p>
+                
+                <p>
+                    Thank you for taking the time to learn about my journey. Whether you're 
+                    here for the hockey highlights or interested in the social work, I hope 
+                    you'll join me in believing that we all have the power to make a difference, 
+                    one person, one community, one game at a time.
+                </p>
+            </div>
+        </div>
+
+        <!-- Stats & Achievements -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="text-center glass-effect rounded-xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-amber-700 mb-2">8+</div>
+                <p class="text-beige-600">Years Playing</p>
+            </div>
+            <div class="text-center glass-effect rounded-xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-yellow-800 mb-2">200+</div>
+                <p class="text-beige-600">Youth Mentored</p>
+            </div>
+            <div class="text-center glass-effect rounded-xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-orange-700 mb-2">15+</div>
+                <p class="text-beige-600">Community Programs</p>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="text-center">
+            <h3 class="text-2xl font-bold mb-4 text-beige-900">Let's Connect</h3>
+            <p class="text-beige-600 mb-6">Always open to new opportunities and collaborations</p>
+            <div class="flex justify-center space-x-4">
+                <a href="mailto:jesse@example.com" class="bg-gradient-to-r from-amber-700 to-yellow-800 hover:from-amber-800 hover:to-yellow-900 text-white px-6 py-3 rounded-full font-semibold transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-envelope mr-2"></i>Email Me
+                </a>
+                <a href="#" class="glass-effect hover:bg-beige-200 hover:bg-opacity-30 text-beige-900 px-6 py-3 rounded-full font-semibold transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
