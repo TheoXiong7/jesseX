@@ -39,10 +39,6 @@ def safe_strftime(date_value, format_string='%B %d, %Y'):
     except (ValueError, TypeError, AttributeError):
         return 'Recently uploaded'
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
@@ -69,6 +65,13 @@ def init_db():
     
     conn.commit()
     conn.close()
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Initialize database on app startup
+init_db()
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
